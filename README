@@ -1,0 +1,42 @@
+![License](https://img.shields.io/badge/license-MIT-blue.svg) 
+![Version](https://img.shields.io/badge/version-1.0.0-green.svg)  
+## 项目简介
+
+项目名称：PrivateAiRag
+自己跟着Ai做的私有化知识库部署,方便自己或者有需要的人使用
+
+## 功能特性
+
+- 列出项目的主要功能或特性。
+- 使用简洁的列表形式展示。
+- 例如：
+  - 功能 1：描述功能 1。
+  - 功能 2：描述功能 2。
+  - 功能 3：描述功能 3。
+
+## 安装指南
+
+### 前提条件
+
+- 项目使用的编程语言或框架。
+- 项目使用的数据库。
+- 项目使用的其他软件或库。
+faiss_cpu==1.10.0
+Requests==2.32.3
+sentence_transformers==3.4.1
+unstructured==0.16.23
+
+### 安装步骤
+
+在终端里输入以下命令：
+pip install -r requirements.txt
+
+```bash
+# 克隆项目
+git clone https://github.com/yourusername/your-repo.git
+
+# 进入项目目录
+cd your-repo
+
+# 安装依赖
+npm install
