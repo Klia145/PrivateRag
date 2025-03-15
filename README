@@ -1,42 +1,45 @@
-![License](https://img.shields.io/badge/license-MIT-blue.svg) 
-![Version](https://img.shields.io/badge/version-1.0.0-green.svg)  
-## 项目简介
+# PrivateRAG - 智能文档问答系统
 
-项目名称：PrivateAiRag
-自己跟着Ai做的私有化知识库部署,方便自己或者有需要的人使用
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![FAISS Required](https://img.shields.io/badge/FAISS-%E2%89%A50.7.0-orange)](https://faiss.ai/)
+[![Ollama Required](https://img.shields.io/badge/Ollama-API%20v1.0-green)](https://ollama.ai/)
 
-## 功能特性
+基于检索增强生成（RAG）架构的本地化文档问答系统，支持文档管理、知识库构建和图形化问答交互。
 
-- 列出项目的主要功能或特性。
-- 使用简洁的列表形式展示。
-- 例如：
-  - 功能 1：描述功能 1。
-  - 功能 2：描述功能 2。
-  - 功能 3：描述功能 3。
+<img src="https://via.placeholder.com/800x400?text=GUI+Demo+Screenshot" alt="界面预览" width="80%"/>
 
-## 安装指南
+## 🌟 核心特性
 
-### 前提条件
+### 文档处理
+- ​**自动去重**：MD5哈希校验机制
+- ​**智能分块**：上下文感知分块（1000字符/块，200字符重叠）
+- ​**多线程支持**：批量文档处理能力
 
-- 项目使用的编程语言或框架。
-- 项目使用的数据库。
-- 项目使用的其他软件或库。
-faiss_cpu==1.10.0
-Requests==2.32.3
-sentence_transformers==3.4.1
-unstructured==0.16.23
+### 检索生成
+- ​**本地编码**：Sentence Transformers嵌入模型
+- ​**高效检索**：FAISS向量数据库（IndexFlatIP）
+- ​**本地LLM**：集成Ollama的deepseek-r1:1.5b模型
 
-### 安装步骤
+### 交互体验
+- ​**可视化界面**：Tkinter构建的桌面GUI
+- ​**状态监控**：实时处理进度提示
+- ​**错误处理**：异常捕获与友好提示
 
-在终端里输入以下命令：
-pip install -r requirements.txt
+## 🛠️ 系统要求
 
+### 硬件配置
+- 最低配置：4核CPU / 8GB内存 / 5GB存储
+- 推荐配置：8核CPU / 16GB内存 / SSD存储
+
+### 软件依赖
 ```bash
-# 克隆项目
-git clone https://github.com/yourusername/your-repo.git
+# 基础依赖
+conda install python=3.9
+pip install faiss-cpu unstructured==0.12.5 sentence-transformers==2.6.1 requests==2.31.0
 
-# 进入项目目录
-cd your-repo
+# GUI依赖
+pip install tkinter==0.1.0 pillow==10.2.0
 
-# 安装依赖
-npm install
+# Ollama服务
+curl https://ollama.ai/install.sh | sh
+ollama pull deepseek-r1:1.5b
