@@ -1,45 +1,117 @@
-# PrivateRAG - 智能文档问答系统
+# Intelligent Document Q&A System (RAG)
 
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![FAISS Required](https://img.shields.io/badge/FAISS-%E2%89%A50.7.0-orange)](https://faiss.ai/)
-[![Ollama Required](https://img.shields.io/badge/Ollama-API%20v1.0-green)](https://ollama.ai/)
+## Overview
 
-基于检索增强生成（RAG）架构的本地化文档问答系统，支持文档管理、知识库构建和图形化问答交互。
+The Intelligent Document Q&A System is a retrieval-augmented generation (RAG) solution designed for local knowledge-based question answering. It provides a user-friendly interface for uploading, processing, indexing, and querying textual documents, enabling quick and precise answers from your local document database.
 
-<img src="https://via.placeholder.com/800x400?text=GUI+Demo+Screenshot" alt="界面预览" width="80%"/>
+## Features
 
-## 🌟 核心特性
+- **Document Upload & Processing**: Supports uploading `.txt` documents, automatically chunked and indexed for efficient retrieval.
+- **Retrieval-Augmented Generation (RAG)**: Generate accurate answers based on retrieved context from indexed documents.
+- **Interactive GUI**: Intuitive Tkinter-based graphical interface for ease of use.
 
-### 文档处理
-- ​**自动去重**：MD5哈希校验机制
-- ​**智能分块**：上下文感知分块（1000字符/块，200字符重叠）
-- ​**多线程支持**：批量文档处理能力
+## Components
 
-### 检索生成
-- ​**本地编码**：Sentence Transformers嵌入模型
-- ​**高效检索**：FAISS向量数据库（IndexFlatIP）
-- ​**本地LLM**：集成Ollama的deepseek-r1:1.5b模型
+The system consists of three main components:
 
-### 交互体验
-- ​**可视化界面**：Tkinter构建的桌面GUI
-- ​**状态监控**：实时处理进度提示
-- ​**错误处理**：异常捕获与友好提示
+1. **Document Processor** (`buildTheKnowledge.py`):
+   - Processes and chunks documents
+   - Generates embeddings using SentenceTransformers
+   - Indexes embeddings using FAISS
 
-## 🛠️ 系统要求
+2. **Retrieval & Generation System**:
+   - Retrieves relevant document chunks from FAISS
+   - Generates responses using local SentenceTransformer embeddings
+   - Communicates with local Ollama API for text generation
 
-### 硬件配置
-- 最低配置：4核CPU / 8GB内存 / 5GB存储
-- 推荐配置：8核CPU / 16GB内存 / SSD存储
+3. **User Interface (Tkinter GUI)**:
+   - Facilitates file uploads and management
+   - Provides an intuitive Q&A interface
+   - Displays processing and query generation status clearly
 
-### 软件依赖
+## Project Structure
+
+```
+project/
+├── DateBase                           # Directory for uploaded documents
+├── ThemessageDatebase                 # Directory for processed data and indices
+│   ├── chunks.txt                     # Document chunks
+│   └── knowledge.index                # FAISS index
+├── buildTheKnowledge.py               # Document processing script
+├── BuildTheRAG.py                     # Retrieval & generation logic
+└── main.py                            # Main application script (Tkinter GUI)
+```
+
+## Installation
+
+### Prerequisites
+
+- Python 3.10 or newer
+- FAISS
+- SentenceTransformers
+- Ollama API (local inference)
+
+Install required Python packages using pip:
+
 ```bash
-# 基础依赖
-conda install python=3.9
-pip install faiss-cpu unstructured==0.12.5 sentence-transformers==2.6.1 requests==2.31.0
+pip install faiss-cpu sentence-transformers unstructured
+```
 
-# GUI依赖
-pip install tkinter==0.1.0 pillow==10.2.0
+Ensure you have a local Ollama server running:
 
-# Ollama服务
-curl https://ollama.ai/install.sh | sh
-ollama pull deepseek-r1:1.5b
+```bash
+ollama serve
+```
+
+### Running the Application
+
+```bash
+python main.py
+```
+
+- Launch the GUI application.
+- Upload your `.txt` documents.
+- Use the interactive QA interface to ask questions.
+
+## Technical Details
+
+### Components
+
+- **FAISS**: Efficient vector similarity search for retrieving relevant document chunks.
+- **SentenceTransformers**: Encodes textual data into embeddings.
+- **Tkinter GUI**: Intuitive interface for document management and interactive Q&A.
+- **Ollama API**: Provides advanced language generation capabilities.
+
+## Usage
+
+### Document Upload
+- Click the **"选择并上传TXT文档"** button.
+- Choose a `.txt` file to upload.
+- The system will automatically process and index the document.
+
+### Asking Questions
+- Enter your question in the provided input box.
+- Click **"提交问题"** to retrieve context-based answers.
+
+### Troubleshooting
+- **Upload Errors**: Check console logs for detailed error messages.
+- **Generation Errors**: Ensure Ollama server is running and accessible.
+
+## Technical Notes
+
+- FAISS index and embedding models must be stored locally.
+- Arbitrary Python execution is restricted for security.
+
+## Caution
+
+- Always backup important data.
+- Ensure proper setup and configuration before deployment.
+
+## Contributing
+
+- Contributions and feedback are welcome! Please open issues or submit PRs.
+
+## License
+
+This project is licensed under the MIT License.
+
