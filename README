@@ -1,121 +1,104 @@
-#  Intelligent Document Q&A System (RAG)
+# Intelligent Document Q&A System (RAG)
 
-> A Retrieval-Augmented Generation (RAG) system for precise, context-aware document question answering
+The Intelligent Document Q&A System integrates Retrieval-Augmented Generation (RAG) techniques, enabling users to query documents locally stored on their computers. It automatically processes, indexes, and retrieves relevant information, providing precise and context-based answers.
 
-The Intelligent Document Q&A System combines advanced text embedding, semantic retrieval, and generative language models to quickly and accurately answer user questions based on local document repositories.
+## Release Notes (v2.0)
 
----
+- Automatic document processing and indexing
+- Improved semantic retrieval with FAISS
+- Enhanced graphical user interface (Tkinter-based)
 
-##  Features
+## Features
 
--  **Document Upload & Indexing**: Easily upload and automatically process `.txt` documents.
--  **Contextual Q&A**: Generate precise, context-based answers using a local RAG pipeline.
--  **User-Friendly Interface**: Interactive and intuitive graphical interface using Tkinter.
+- **Automatic Document Processing**: Upload `.txt` documents which are automatically split into semantic chunks and indexed.
+- **Semantic Retrieval**: Quickly retrieve relevant document chunks using semantic search.
+- **Contextual Answers**: Generate accurate, context-aware responses via local Ollama API.
+- **Intuitive GUI**: Easily interact with the system using a user-friendly interface.
 
-## 📦 System Components
+## Components
 
-The system includes three main modules:
+The system consists of three main components:
 
-1. ###  **Document Processor (`buildTheKnowledge.py`)**
-   - Automatically splits documents into manageable chunks.
-   - Encodes chunks into semantic vectors.
-   - Indexes these vectors with FAISS.
+1. **Document Processing (`buildTheKnowledge.py`)**
+   - Handles automatic document chunking and indexing.
+   - Utilizes SentenceTransformers for text embeddings.
+   - Indexes document embeddings using FAISS.
 
-2. ** Retrieval & Generation Engine (`BuildTheRAG.py`)**:
-   - Performs semantic retrieval from indexed document chunks.
-   - Generates natural-language responses via local Ollama API.
+2. **Retrieval-Augmented Generation Module (`BuildTheRAG.py`)**
+   - Performs semantic search to retrieve relevant context.
+   - Generates natural language responses via local Ollama models.
 
-3. ** Graphical Interface (`main.py`)**:
-   - Built using Tkinter for straightforward document management and querying.
-   - Simple interface for seamless user interaction.
+3. **Graphical User Interface (`main.py`)**
+   - Developed with Tkinter for ease of use.
+   - Provides functionalities for document uploading and interactive question-answering.
 
----
+## Installation
 
-##  Project Structure
+### Prerequisites
 
-```bash
-.
-├── DateBase/                    # Uploaded documents folder
-├── ThemessageDatebase           # Processed data storage
-│   ├── chunks.txt               # Chunks extracted from documents
-│   └── knowledge.index          # FAISS vector index
-├── buildTheKnowledge.py         # Document chunking and indexing
-├── BuildTheRAG.py               # Retrieval and answer generation
-└── main.py                      # GUI Application entry point
-```
+- Python 3.10 or higher
+- FAISS
+- SentenceTransformers
+- Ollama (locally running)
 
----
-
-##  Quick Start
-
-###  Installation
-
-#### Requirements
-
-- Python 3.10+
-- FAISS (for semantic indexing)
-- SentenceTransformers (text embeddings)
-- Ollama (local inference)
-
-Install dependencies with:
+Install required Python packages using pip:
 
 ```bash
 pip install faiss-cpu sentence-transformers requests unstructured tkinter
 ```
 
-Ensure the Ollama server is active:
+Ensure Ollama server is running locally:
 
 ```bash
 ollama serve
 ```
 
-### ▶ Running the App
+## Usage
 
-Launch the application:
+### Uploading Documents
+
+1. Launch the application:
 
 ```bash
 python main.py
 ```
 
-##  Getting Started
+2. Click **"Select and Upload TXT Document"** in the GUI.
+3. Choose your `.txt` document. The system will automatically process and index it.
 
-###  Upload Documents
+### Asking Questions
 
-1. Click on **"Select and Upload TXT Document"**.
-2. Choose your `.txt` file.
-3. The system automatically processes and indexes it.
+1. Enter your question in the provided text box.
+2. Click the **"Submit Question"** button.
+3. View the generated answer based on the indexed document contents.
 
-###  Asking Questions
+## Troubleshooting
 
-- Type your question into the input box.
-- Click **"Submit Question"**.
-- Get precise answers based on your local documents.
+- **File Upload Issues**: Verify that your files are in `.txt` format and retry.
+- **Generation Errors**: Ensure the Ollama server is active and accessible.
+- **Indexing Problems**: Check console outputs for error messages during indexing.
 
-##  Troubleshooting
+## Technical Details
 
-- **Upload Errors**: Ensure file format is `.txt` and retry.
-- **Answer Generation Issues**: Confirm Ollama server is running locally.
+### Communication Protocol
 
-##  Technical Overview
+- Semantic retrieval powered by FAISS.
+- Language generation handled locally through Ollama API calls.
 
-###  Communication
+### Security Considerations
 
-- Uses FAISS for high-speed semantic retrieval.
-- Ollama API handles language model inference locally.
+- Keep your document contents secure and regularly back up data.
+- Be cautious when processing sensitive information.
 
-###  Security Considerations
+## Contributing
 
-- Ensure sensitive information in uploaded documents is securely managed.
-- Regularly back up your indexed data and documents.
+We welcome contributions! Feel free to open issues or submit pull requests.
 
-##  Contributing
+## License
 
-Contributions and suggestions are warmly welcomed! Please submit issues or open a PR.
-
-##  License
-
-Licensed under MIT License.
+This project is released under the MIT License.
 
 ---
 
 © 2024 Intelligent Document Q&A Development Team
+
