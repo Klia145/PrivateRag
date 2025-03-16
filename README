@@ -1,6 +1,6 @@
 # Intelligent Document Q&A System (RAG)
 
-The Intelligent Document Q&A System integrates Retrieval-Augmented Generation (RAG) techniques, enabling users to query documents locally stored on their computers. It automatically processes, indexes, and retrieves relevant information, providing precise and context-based answers.
+The Intelligent Document Q&A System integrates Retrieval-Augmented Generation (RAG) techniques, enabling users to query documents locally stored on their computers. It automatically processes, indexes, and retrieves relevant document chunks to generate context-aware answers.
 
 ## Release Notes (v2.0)
 
@@ -59,9 +59,9 @@ ollama serve
 
 1. Launch the application:
 
-```bash
-python main.py
-```
+    ```bash
+    python main.py
+    ```
 
 2. Click **"Select and Upload TXT Document"** in the GUI.
 3. Choose your `.txt` document. The system will automatically process and index it.
