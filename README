@@ -1,104 +1,58 @@
-# Intelligent Document Q&A System (RAG)
+## Intelligent Document Q&A System (RAG Integration)
 
-The Intelligent Document Q&A System integrates Retrieval-Augmented Generation (RAG) techniques, enabling users to query documents locally stored on their computers. It automatically processes, indexes, and retrieves relevant document chunks to generate context-aware answers.
-
-## Release Notes (v2.0)
-
-- Automatic document processing and indexing
-- Improved semantic retrieval with FAISS
-- Enhanced graphical user interface (Tkinter-based)
+The Intelligent Document Q&A System leverages Retrieval-Augmented Generation (RAG) technology, allowing users to upload text documents and receive intelligent answers based on the document content. It uses document chunking, sentence embeddings, and vector-based semantic search to provide precise, contextually accurate responses.
 
 ## Features
 
-- **Automatic Document Processing**: Upload `.txt` documents which are automatically split into semantic chunks and indexed.
-- **Semantic Retrieval**: Quickly retrieve relevant document chunks using semantic search.
-- **Contextual Answers**: Generate accurate, context-aware responses via local Ollama API.
-- **Intuitive GUI**: Easily interact with the system using a user-friendly interface.
+- **Automatic Document Processing:**
+  - Upload `.txt` documents via GUI.
+  - Automatically chunk documents by titles and create embeddings.
+
+- **Semantic Retrieval & Question Answering:**
+  - Retrieve relevant information using FAISS semantic search.
+  - Generate precise answers using local language models (Claude API via Ollama).
+
+- **User-friendly GUI:**
+  - Tkinter-based intuitive user interface.
+  - Status updates and progress indicators during processing.
+
+---
 
 ## Components
 
-The system consists of three main components:
+The project includes the following main components:
 
-1. **Document Processing (`buildTheKnowledge.py`)**
-   - Handles automatic document chunking and indexing.
-   - Utilizes SentenceTransformers for text embeddings.
-   - Indexes document embeddings using FAISS.
+### 1. **Document Processing (`buildTheKnowledge.py`):**
+  - Partitions documents into manageable chunks based on titles.
+  - Generates embeddings using SentenceTransformer.
+  - Stores embeddings in a FAISS vector database.
 
-2. **Retrieval-Augmented Generation Module (`BuildTheRAG.py`)**
-   - Performs semantic search to retrieve relevant context.
-   - Generates natural language responses via local Ollama models.
+### 2. **Retrieval-Augmented Generation System (`BuildTheRAG.py`):**
+  - Implements semantic search over indexed documents.
+  - Interfaces with the local Claude AI model through HTTP requests.
+  - Answers user queries based on retrieved context.
 
-3. **Graphical User Interface (`main.py`)**
-   - Developed with Tkinter for ease of use.
-   - Provides functionalities for document uploading and interactive question-answering.
+### 3. **Graphical User Interface (`demotwo.py`):**
+  - User-friendly interface built with Tkinter.
+  - Facilitates document uploads and initiates document processing.
+  - Provides real-time status updates and answers user queries.
 
 ## Installation
 
 ### Prerequisites
 
-- Python 3.10 or higher
-- FAISS
+- Python 3.10 or newer
+- FAISS (CPU recommended)
 - SentenceTransformers
-- Ollama (locally running)
+- Unstructured
+- Tkinter (typically included with Python installations)
+- Ollama (local Claude AI instance running, e.g., `deepseek-r1:1.5b`)
 
-Install required Python packages using pip:
+### Installing Dependencies
 
-```bash
-pip install faiss-cpu sentence-transformers requests unstructured tkinter
-```
-
-Ensure Ollama server is running locally:
+Install all required Python packages:
 
 ```bash
-ollama serve
-```
+pip install sentence-transformers faiss-cpu unstructured requests
 
-## Usage
-
-### Uploading Documents
-
-1. Launch the application:
-
-    ```bash
-    python main.py
-    ```
-
-2. Click **"Select and Upload TXT Document"** in the GUI.
-3. Choose your `.txt` document. The system will automatically process and index it.
-
-### Asking Questions
-
-1. Enter your question in the provided text box.
-2. Click the **"Submit Question"** button.
-3. View the generated answer based on the indexed document contents.
-
-## Troubleshooting
-
-- **File Upload Issues**: Verify that your files are in `.txt` format and retry.
-- **Generation Errors**: Ensure the Ollama server is active and accessible.
-- **Indexing Problems**: Check console outputs for error messages during indexing.
-
-## Technical Details
-
-### Communication Protocol
-
-- Semantic retrieval powered by FAISS.
-- Language generation handled locally through Ollama API calls.
-
-### Security Considerations
-
-- Keep your document contents secure and regularly back up data.
-- Be cautious when processing sensitive information.
-
-## Contributing
-
-We welcome contributions! Feel free to open issues or submit pull requests.
-
-## License
-
-This project is released under the MIT License.
-
----
-
-© 2024 Intelligent Document Q&A Development Team
 
