@@ -1,43 +1,109 @@
-# Intelligent Document Q&A System (RAG)
+智能文档问答系统（RAG）
 
-A Retrieval-Augmented Generation (RAG) system for precise, context-aware document question answering.
+一个基于检索增强生成（RAG）技术的智能文档问答系统，用于基于本地文档库精准、上下文感知地回答用户问题。
 
-The Intelligent Document Q&A System combines advanced text embedding, semantic retrieval, and generative language models to quickly and accurately answer user questions based on local document repositories.
+智能文档问答系统结合了先进的文本嵌入、语义检索和生成性语言模型，能够快速且准确地根据本地文档库回答用户的问题。
 
-## Features
+功能特性
 
-- **Document Upload & Indexing**: Easily upload and automatically process `.txt` documents.
-- **Contextual Q&A**: Generate precise, context-based answers using a local RAG pipeline.
-- **User-Friendly Interface**: Interactive and intuitive graphical interface using Tkinter.
+**文档上传与索引**：轻松上传并自动处理 `.txt` 文档。
+**上下文问答**：使用本地RAG管道生成精确的上下文相关回答。
+**用户友好界面**：基于Tkinter构建的互动式图形界面，操作直观易用。
 
-## System Components
+系统组件
 
-The system includes three main modules:
+系统包括三个主要模块：
 
-1. **Document Processor (`buildTheKnowledge.py`)**:
-   - Automatically splits documents into manageable chunks.
-   - Encodes chunks into semantic vectors.
-   - Indexes these vectors with FAISS.
+1. **文档处理器 (`buildTheKnowledge.py`)**：
+   - 自动将文档分割成可管理的块。
+   - 将块编码为语义向量。
+   - 使用FAISS对这些向量进行索引。
 
-2. **Retrieval & Generation Engine (`BuildTheRAG.py`)**:
-   - Performs semantic retrieval from indexed document chunks.
-   - Generates natural-language responses via local Ollama API.
+2. **检索与生成引擎 (`BuildTheRAG.py`)**：
+   - 从已索引的文档块中进行语义检索。
+   - 通过本地Ollama API生成自然语言响应。
 
-3. **Graphical Interface (`main.py`)**:
-   - Built using Tkinter for straightforward document management and querying.
-   - Simple interface for seamless user interaction.
+3. **图形界面 (`main.py`)**：
+   - 使用Tkinter构建，提供简洁的文档管理和查询界面。
+   - 提供简易的用户交互。
 
 ---
 
-### Project Structure
+### 项目结构
 
 ```bash
 .
-├── DateBase/                    # Uploaded documents folder
-├── ThemessageDatebase           # Processed data storage
-│   ├── chunks.txt               # Chunks extracted from documents
-│   └── knowledge.index          # FAISS vector index
-├── buildTheKnowledge.py         # Document chunking and indexing
-├── BuildTheRAG.py               # Retrieval and answer generation
-└── main.py                      # GUI Application entry point
+├── DateBase/                    # 上传的文档文件夹
+├── ThemessageDatebase           # 处理后的数据存储
+│   ├── chunks.txt               # 从文档中提取的块
+│   └── knowledge.index          # FAISS向量索引
+├── buildTheKnowledge.py         # 文档分块和索引处理
+├── BuildTheRAG.py               # 检索与答案生成
+└── main.py                      # GUI应用入口
+快速开始
+安装
+系统要求
+Python 3.10+
 
+FAISS（用于语义索引）
+
+SentenceTransformers（文本嵌入）
+
+Ollama（本地推理）
+
+安装依赖：
+
+bash
+复制
+编辑
+pip install faiss-cpu sentence-transformers requests unstructured tkinter
+确保 Ollama 服务器处于激活状态：
+bash
+复制
+编辑
+ollama serve
+▶ 运行应用
+启动应用：
+
+bash
+复制
+编辑
+python demoTwo.py
+使用指南
+上传文档
+点击 “选择并上传 TXT 文档”。
+
+选择你的 .txt 文件。
+
+系统会自动处理并索引文档。
+
+提问
+在输入框中输入你的问题。
+
+点击 “提交问题”。
+
+根据本地文档获取精准的回答。
+
+常见问题
+上传错误：确保文件格式为 .txt，然后重试。
+
+回答生成问题：确认 Ollama 服务器正在本地运行。
+
+技术概述
+通信
+使用 FAISS 进行高速语义检索。
+
+Ollama API 处理本地的语言模型推理。
+
+安全考虑
+确保上传文档中的敏感信息得到安全管理。
+
+定期备份索引数据和文档。
+
+贡献
+欢迎贡献和建议！请提交问题或发起PR。
+
+许可证
+本项目使用 MIT 许可证。
+
+© 2024 智能文档问答开发团队
