@@ -1,37 +1,35 @@
-#  Intelligent Document Q&A System (RAG)
+# Intelligent Document Q&A System (RAG)
 
- A Retrieval-Augmented Generation (RAG) system for precise, context-aware document question answering
+A Retrieval-Augmented Generation (RAG) system for precise, context-aware document question answering.
 
 The Intelligent Document Q&A System combines advanced text embedding, semantic retrieval, and generative language models to quickly and accurately answer user questions based on local document repositories.
 
+## Features
 
+- **Document Upload & Indexing**: Easily upload and automatically process `.txt` documents.
+- **Contextual Q&A**: Generate precise, context-based answers using a local RAG pipeline.
+- **User-Friendly Interface**: Interactive and intuitive graphical interface using Tkinter.
 
-##  Features
-
-**Document Upload & Indexing**: Easily upload and automatically process `.txt` documents.
-  **Contextual Q&A**: Generate precise, context-based answers using a local RAG pipeline.
-  **User-Friendly Interface**: Interactive and intuitive graphical interface using Tkinter.
-
-##  System Components
+## System Components
 
 The system includes three main modules:
 
-1. ##  **Document Processor (`buildTheKnowledge.py`)**
-   Automatically splits documents into manageable chunks.
-   Encodes chunks into semantic vectors.
-   Indexes these vectors with FAISS.
+1. **Document Processor (`buildTheKnowledge.py`)**:
+   - Automatically splits documents into manageable chunks.
+   - Encodes chunks into semantic vectors.
+   - Indexes these vectors with FAISS.
 
-2.  Retrieval & Generation Engine (`BuildTheRAG.py`)**:
-    Performs semantic retrieval from indexed document chunks.
-    Generates natural-language responses via local Ollama API.
+2. **Retrieval & Generation Engine (`BuildTheRAG.py`)**:
+   - Performs semantic retrieval from indexed document chunks.
+   - Generates natural-language responses via local Ollama API.
 
-3.  Graphical Interface (`main.py`)**:
-    Built using Tkinter for straightforward document management and querying.
-    Simple interface for seamless user interaction.
+3. **Graphical Interface (`main.py`)**:
+   - Built using Tkinter for straightforward document management and querying.
+   - Simple interface for seamless user interaction.
 
 ---
 
-###  Project Structure
+### Project Structure
 
 ```bash
 .
@@ -42,81 +40,4 @@ The system includes three main modules:
 ├── buildTheKnowledge.py         # Document chunking and indexing
 ├── BuildTheRAG.py               # Retrieval and answer generation
 └── main.py                      # GUI Application entry point
-```
-
----
-
-##  Quick Start
-
-###  Installation
-
-#### Requirements
-
-- Python 3.10+
-- FAISS (for semantic indexing)
-- SentenceTransformers (text embeddings)
-- Ollama (local inference)
-
-Install dependencies with:
-
-```bash
-pip install faiss-cpu sentence-transformers requests unstructured tkinter
-```
-
-#####Ensure the Ollama server is active:
-
-```bash
-ollama serve
-```
-
-### ▶ Running the App
-
-Launch the application:
-
-```bash
-python demoTwo.py
-```
-
-##  Getting Started
-
-###  Upload Documents
-
-1. Click on **"Select and Upload TXT Document"**.
-2. Choose your `.txt` file.
-3. The system automatically processes and indexes it.
-
-###  Asking Questions
-
- Type your question into the input box.
- Click **"Submit Question"**.
- Get precise answers based on your local documents.
-
-##  Troubleshooting
-
- **Upload Errors**: Ensure file format is `.txt` and retry.
- **Answer Generation Issues**: Confirm Ollama server is running locally.
-
-##  Technical Overview
-
-###  Communication
-
- Uses FAISS for high-speed semantic retrieval.
- Ollama API handles language model inference locally.
-
-###  Security Considerations
-
- Ensure sensitive information in uploaded documents is securely managed.
- Regularly back up your indexed data and documents.
-
-##  Contributing
-
-Contributions and suggestions are warmly welcomed! Please submit issues or open a PR.
-
-##  License
-
-Licensed under MIT License.
-
----
-
-© 2024 Intelligent Document Q&A Development Team
 
